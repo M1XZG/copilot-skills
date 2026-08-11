@@ -39,4 +39,7 @@ The word `report` authorises the skill to notify verified abuse contacts. If
 you ask only to inspect or analyse a message, the skill stops before sending
 anything.
 
+National phishing services are not contacted for ordinary spam. They are used
+only for credible phishing or fraud when you specifically request it.
+
 The skill does not delete the source email unless you explicitly ask.

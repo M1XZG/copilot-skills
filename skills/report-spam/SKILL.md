@@ -139,11 +139,14 @@ Submit only where relevant:
 - sending email platform or network abuse desk
 - hosting provider and registrar for malicious websites
 - impersonated service through its official reporting route
-- the user's national phishing reporting service
 - relevant browser or safe-browsing service for active phishing URLs
 
-For a UK user, the official suspicious-email destination is normally
-`report@phishing.gov.uk`. Verify that it is still current before sending.
+Do not automatically send reports to a national phishing service. Ordinary
+spam and unsolicited marketing provide little actionable value to those
+services. For a UK user, use `report@phishing.gov.uk` only when the message
+contains a credible phishing, credential-theft, malware, impersonation, or
+financial-fraud indicator and the user specifically asks for that destination
+after the analysis. Verify that the address is still current before sending.
 
 Attach the original `.eml` only to trusted abuse teams or official authorities.
 Sending a report from the user's mailbox discloses their email address to the
