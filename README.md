@@ -7,6 +7,7 @@ Reusable agent skills for GitHub Copilot CLI.
 | Skill | Purpose |
 | --- | --- |
 | [report-spam](skills/report-spam/) | Trace a suspicious email, identify the infrastructure and accounts involved, and report confirmed abuse. It also reports cryptocurrency wallets used in sextortion and blackmail scams. |
+| [star-farm-intel](skills/star-farm-intel/) | Research unsolicited GitHub promotion claims and prepare polite, draft-only replies that gather evidence about star-farming services. |
 
 ## Install a skill
 
