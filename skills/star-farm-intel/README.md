@@ -37,6 +37,12 @@ An invocation reads the identified thread, researches public claims and creates
 one Gmail reply draft. It does not send the reply. The user must review and
 approve every outgoing message separately.
 
+Each thread also gets a private local evidence ledger under
+`~/.local/state/star-farm-intel/cases/`. It preserves raw messages and records
+identities, addresses, links, redirect chains, timezone changes, infrastructure,
+claims, commercial terms, public research and all draft or send actions. Case
+data is never committed to this repository.
+
 The skill will not provide credentials, repository access, private code,
 payment or software installation. Requests for those trigger a warning instead
 of another draft.

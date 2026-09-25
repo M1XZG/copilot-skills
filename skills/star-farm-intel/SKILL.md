@@ -20,6 +20,7 @@ site in an authenticated browser.
 Invocation with `/star-farm-intel <Gmail URL>` authorises:
 
 - reading the identified Gmail thread;
+- preserving its messages and indicators in a private local case ledger;
 - researching public claims and indicators supplied by the sender;
 - creating one reply draft in Gmail for the user's review.
 
@@ -65,6 +66,23 @@ Useful phrases include:
 
 Do not reuse the same phrase mechanically across threads.
 
+## Private evidence ledger
+
+Maintain a durable case directory for every thread:
+
+```text
+~/.local/state/star-farm-intel/cases/<gmail-thread-id>/
+```
+
+Set the case directory to mode `700` and its files to mode `600`. Never commit,
+publish, email or place case data in Copilot memory. Do not include the user's
+credentials, authentication tokens, unrelated mailbox contents or private
+information about third parties.
+
+Follow `references/evidence-ledger.md`. Preserve every inbound message as raw
+MIME and update the ledger on each invocation, even when no reply is drafted.
+Record exact values rather than summaries wherever practical.
+
 ## Required workflow
 
 ### 1. Identify the exact thread
@@ -76,8 +94,36 @@ Do not reuse the same phrase mechanically across threads.
 4. Retrieve the complete thread, including headers and quoted context.
 5. Separate the sender's new text from quoted replies before deciding what
    remains unanswered.
+6. Preserve each previously unseen inbound message as raw MIME in the private
+   case directory and record its SHA-256 hash.
 
-### 2. Assess the approach
+### 2. Update the evidence ledger
+
+Before researching or drafting, record all new information from the thread:
+
+- every claimed, visible, envelope, authenticated and reply-to identity;
+- exact email addresses, names, companies, postal addresses, telephone numbers,
+  websites, handles and account identifiers;
+- Gmail message ID, RFC Message-ID, subject, sent timestamp, parsed UTC time and
+  the exact numeric timezone offset from every message;
+- a timezone timeline and any changes in offset, while stating that a message
+  timezone is client-controlled and does not prove physical location;
+- Received hops, connecting IPs and hostnames, SPF, DKIM, DMARC and ARC results,
+  DKIM domains, Message-ID domain, mailer and user-agent headers when present;
+- every URL exactly as supplied, plus safely inspected redirect chains, final
+  destinations, domains and infrastructure ownership;
+- repositories, claimed customers, communities, channels, prices, guarantees,
+  timelines, payment methods and requested access;
+- attachments by filename, media type, size and hash without opening or running
+  them;
+- contradictions, changed claims and unanswered questions;
+- public research queries, results, source URLs and confidence;
+- every draft, approval, sent message and report with timestamp and status.
+
+Retain historical values. Never overwrite an old identity, address, timezone or
+claim merely because the sender later provides a different one.
+
+### 3. Assess the approach
 
 Record the sender's:
 
@@ -93,7 +139,7 @@ Record the sender's:
 Do not assume that a repository supplied as an example endorses the sender or
 has ever dealt with them.
 
-### 3. Research public claims safely
+### 4. Research public claims safely
 
 Use read-only GitHub and web tools to inspect repositories, profiles and sites
 the sender names. Verify:
@@ -109,7 +155,10 @@ the sender names. Verify:
 Do not contact repository owners or contributors. Do not state that a lack of
 public evidence proves fraud.
 
-### 4. Choose the next information gap
+Write the queries, checked sources, findings and limitations to the evidence
+ledger. A blocked search is a coverage gap, not a negative finding.
+
+### 5. Choose the next information gap
 
 Consult `references/question-playbook.md`. Pick the earliest useful gap that
 the sender has not already answered. Prefer questions that invite concrete,
@@ -126,7 +175,7 @@ checkable detail:
 Do not ask a long questionnaire. One focused exchange usually produces more
 useful detail than several challenges at once.
 
-### 5. Draft the reply
+### 6. Draft the reply
 
 Draft a direct reply in the existing Gmail thread. The reply must:
 
@@ -139,7 +188,10 @@ Draft a direct reply in the existing Gmail thread. The reply must:
 
 Create the Gmail draft but do not send it.
 
-### 6. Verify and report
+Record the exact draft body, Gmail draft ID, reply target and creation time in
+the ledger.
+
+### 7. Verify and report
 
 Confirm that the draft exists in the correct thread and has the intended
 recipient. Report:
@@ -150,6 +202,10 @@ recipient. Report:
 - the exact drafted reply;
 - any suspicious request or safety concern;
 - that the draft remains unsent.
+
+Also report the case-ledger path and the most important newly recorded
+indicators or contradictions. Do not print the full ledger or raw headers
+unless the user asks.
 
 ## Stop conditions
 
